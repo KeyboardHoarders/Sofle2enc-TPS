@@ -1,4 +1,4 @@
-# Sofle Choc or MX with 2 encoders.  Buy now at keyboardhoarders.com
+# Sofle Choc or MX with 2 encoders.  Testing repo for trackpad wireless build
 
 Flash firmware:
 1. Keep both halves powered on.

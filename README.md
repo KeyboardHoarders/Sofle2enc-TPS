@@ -26,12 +26,14 @@ which frees the OLED header's I2C pins and the nice!view CS pad).
 | GND | GND (OLED header) |
 | SDA | D2 (OLED header "SDA/MOSI" pad) |
 | SCL | D3 (OLED header "SCL/SCK" pad) |
-| RDY | D4 |
+| RDY | D0 |
 | RST | D1 (nice!view CS pad) |
 
-Note: RDY is on **D4**, not D21 as on the lily58/corne trackpad builds - on the
-Sofle, D20/D21 are the right encoder's A/B pins, so D21 isn't available. Both
-encoders keep working with this wiring.
+Note: RDY is on **D0**, not D21 as on the lily58/corne trackpad builds - on the
+Sofle, D20/D21 are the right encoder's A/B pins, so D21 isn't available. D4
+can't be used either: the PCB routes it to the first matrix row, so RDY there
+makes the trackpad type "6789" instead of moving the cursor. Both encoders keep
+working with this wiring.
 
 After changing `config/west.yml` you'll need to run `west update` (or let the
 GitHub Action do it) to pull in the trackpad driver module before building.

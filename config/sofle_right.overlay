@@ -10,14 +10,16 @@
  * bus, so no custom pinctrl is needed here.
  *
  * RST reuses the nice!view CS pad, D1 (P0.06), which is free on this
- * half now that there is no display. RDY uses D4 (P0.22): unlike the
+ * half now that there is no display. RDY uses D0 (P0.08): unlike the
  * lily58/corne builds this cannot be D21 (P0.31), because on the Sofle
- * D20/D21 are the right encoder's A/B pins.
+ * D20/D21 are the right encoder's A/B pins, and it cannot be D4 (P0.22)
+ * either, because this PCB routes D4 to the first matrix row - the RDY
+ * pulses show up as phantom 6/7/8/9 key presses.
  *
  * Wiring:
  *   TPS43 VDD -> 3V             TPS43 GND -> GND
  *   TPS43 SDA -> nice_nano D2   TPS43 SCL -> nice_nano D3
- *   TPS43 RDY -> nice_nano D4   TPS43 RST -> nice_nano D1 (nice!view CS pad)
+ *   TPS43 RDY -> nice_nano D0   TPS43 RST -> nice_nano D1 (nice!view CS pad)
  */
 
 &i2c0 {
@@ -30,7 +32,7 @@
         status = "okay";
 
         rst-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
-        rdy-gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>;
+        rdy-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
 
         enable-power-management;
 
